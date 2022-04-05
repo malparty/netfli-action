@@ -20,7 +20,7 @@ jobs:
         with:
           publish-dir: './build'
           deploy-message: "Preview deployed from GitHub Actions"
-          alias: deploy-preview-${{ github.event.number }}
+          alias: deploy-${{ github.ref }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
