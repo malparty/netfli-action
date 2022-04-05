@@ -14,7 +14,7 @@ const App = (): JSX.Element => {
         <img src={logo} className="app-logo" alt="logo" />
         <p>{t('sample_page.message', { codeSample: '<code>src/App.tsx</code>' })}</p>
         <a className="app-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer" data-test-id="app-link">
-          {t('sample_page.learn_react')}
+          {t('sample_page.learn_react')} This is a TEST.
         </a>
       </header>
     </div>
