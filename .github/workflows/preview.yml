@@ -1,5 +1,4 @@
-# .github/workflows/netlify.yml
-name: Build and Deploy to Netlify
+name: Netlify Preview
 on:
   push:
     branches-ignore: ['main', 'master']
@@ -9,16 +8,20 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      # ( Build to ./dist or other directory... )
+
+      - name: Install modules
+        run: yarn
+
+      - name: Build
+        run: yarn build
 
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2
         with:
-          publish-dir: './dist'
-          production-branch: master
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          deploy-message: "Deploy from GitHub Actions"
+          publish-dir: './build'
+          deploy-message: "Preview deployed from GitHub Actions"
           alias: deploy-preview-${{ github.event.number }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
